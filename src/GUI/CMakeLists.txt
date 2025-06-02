@@ -9,15 +9,13 @@
 # 
 # only for non-profit usage !!!
 # ---------------------------------------------------------------------------
-# ass include path for pch.h ...
-# ---------------------------------------------------------------------------
-add_executable (Emulator
-	Emulator.cpp
-	Emulator.h
-    misc.cpp
+
+add_executable (GUI
+	GUI.cpp
+	GUI.h
 )
 
 # ---------------------------------------------------------------------------
 # activate / enabled PCH ...
 # ---------------------------------------------------------------------------
-configure_pch(Emulator)
+configure_pch(GUI)

@@ -1,5 +1,5 @@
-﻿// ---------------------------------------------------------------------------
-// File:   Emulator.h
+// ---------------------------------------------------------------------------
+// File:   gui.cpp
 // Author: Jens Kallup - paule32
 //
 // This file is part of Emulator.
@@ -9,8 +9,9 @@
 // 
 // only for non-profit usage !!!
 // ---------------------------------------------------------------------------
-#pragma once
+#include "gui.h"
 
-#include "../pch.h"
-
-extern std::string getExecutablePath();
+int main()
+{
+	printf("yyyyy\n");
+}
