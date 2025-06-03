@@ -4,3 +4,5 @@
 /src/GUI/x64
 /src/GUI/.vs
 /src/GUI/GUI/x64
+/src/GUI/backup
+bin/GUI.exe
