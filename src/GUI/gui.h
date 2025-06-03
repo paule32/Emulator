@@ -1,14 +1,40 @@
-// ---------------------------------------------------------------------------
-// File:   gui.cpp
-// Author: Jens Kallup - paule32
+
+// GUI.h: Hauptheaderdatei für die GUI-Anwendung
 //
-// This file is part of Emulator.
-//
-// (c) Copyright 2025 Jens Kallup - paule32
-// all rights reserved.
-// 
-// only for non-profit usage !!!
-// ---------------------------------------------------------------------------
 #pragma once
 
-#include "../pch.h"
+#ifndef __AFXWIN_H__
+	#error "'pch.h' vor dieser Datei für PCH einschließen"
+#endif
+
+#include "resource.h"       // Hauptsymbole
+
+
+// MyEmulatorGUI:
+// Siehe GUI.cpp für die Implementierung dieser Klasse
+//
+
+class MyEmulatorGUI : public CWinAppEx
+{
+public:
+	MyEmulatorGUI() noexcept;
+
+
+// Überschreibungen
+public:
+	virtual BOOL InitInstance();
+	virtual int ExitInstance();
+
+// Implementierung
+	UINT  m_nAppLook;
+	BOOL  m_bHiColorIcons;
+
+	virtual void PreLoadState();
+	virtual void LoadCustomState();
+	virtual void SaveCustomState();
+
+	afx_msg void OnAppAbout();
+	DECLARE_MESSAGE_MAP()
+};
+
+extern MyEmulatorGUI theApp;

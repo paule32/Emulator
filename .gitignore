@@ -1,3 +1,6 @@
 /.vs
 /src/.vs
 /src/out
+/src/GUI/x64
+/src/GUI/.vs
+/src/GUI/GUI/x64

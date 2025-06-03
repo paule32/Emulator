@@ -31,4 +31,3 @@ endfunction()
 # sub projects ...
 # ---------------------------------------------------------------------------
 add_subdirectory ("Emulator")
-add_subdirectory ("GUI")
