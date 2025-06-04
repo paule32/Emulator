@@ -10,7 +10,7 @@
 // only for non-profit usage !!!
 // ---------------------------------------------------------------------------
 #pragma once
-
-#include "pch.h"
+#define EmulatorCRT
+#include "../pch.h"
 
 extern std::string getExecutablePath();

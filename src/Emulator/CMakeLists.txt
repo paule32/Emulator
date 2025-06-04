@@ -9,13 +9,18 @@
 # 
 # only for non-profit usage !!!
 # ---------------------------------------------------------------------------
-set(CMAKE_CXX_STANDARD 20)
+project(Emulator)
 
+# ---------------------------------------------------------------------------
+# add include path for pch.h ...
+# ---------------------------------------------------------------------------
 add_executable (Emulator
 	Emulator.cpp
 	Emulator.h
-	pch.h
- "misc.cpp")
+    misc.cpp
+)
 
-# add pre-compiled header
-target_precompile_headers(Emulator PRIVATE pch.h)
+# ---------------------------------------------------------------------------
+# activate / enabled PCH ...
+# ---------------------------------------------------------------------------
+configure_pch(Emulator)

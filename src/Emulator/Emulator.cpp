@@ -53,8 +53,12 @@ typedef struct {
 # define PF_R       4
 # define PF_X       1
 
-// Hilfsfunktion: Register-Pointer holen
-uint64_t* get_reg_ptr(CPUState* cpu, uint8_t reg_id) {
+
+// ---------------------------------------------------------------------------
+// function helper: get Register-Pointer
+// ---------------------------------------------------------------------------
+static uint64_t*
+get_reg_ptr(CPUState* cpu, uint8_t reg_id) {
     switch (reg_id) {
     case 0: return &cpu->rax;
     case 1: return &cpu->rbx;
@@ -66,7 +70,8 @@ uint64_t* get_reg_ptr(CPUState* cpu, uint8_t reg_id) {
     }
 }
 
-void dump_regs(CPUState* cpu) {
+static void
+dump_regs(CPUState* cpu) {
     std::cout
         << "RAX="
         << std::showbase
@@ -128,7 +133,8 @@ void dump_regs(CPUState* cpu) {
         << std::endl;
 }
 
-void print_header(const Elf64_Ehdr* hdr) {
+static void
+print_header(const Elf64_Ehdr* hdr) {
     printf("ELF Header:\n");
     printf("  Magic:   %02x %02x %02x %02x\n",
         hdr->e_ident[0], hdr->e_ident[1], hdr->e_ident[2], hdr->e_ident[3]);
@@ -142,7 +148,8 @@ void print_header(const Elf64_Ehdr* hdr) {
         (unsigned long long)hdr->e_shoff, hdr->e_shnum);
 }
 
-void parse_program_headers(FILE* f, const Elf64_Ehdr* hdr) {
+static void
+parse_program_headers(FILE* f, const Elf64_Ehdr* hdr) {
     printf("\nProgram Headers:\n");
     fseek(f, hdr->e_phoff, SEEK_SET);
 
@@ -156,7 +163,8 @@ void parse_program_headers(FILE* f, const Elf64_Ehdr* hdr) {
     }
 }
 
-int write_elf(void)
+static int
+write_elf(void)
 {
     FILE* f = fopen("program.elf", "wb");
     if (!f) {
@@ -209,7 +217,8 @@ int write_elf(void)
     return EXIT_SUCCESS;
 }
 
-int load_elf(const char* filename, CPUState* cpu) {
+static int
+load_elf(const char* filename, CPUState* cpu) {
     FILE* f = fopen(filename, "rb");
     if (!f) {
         perror("Datei öffnen");
@@ -271,7 +280,8 @@ int load_elf(const char* filename, CPUState* cpu) {
     return 1;
 }
 
-void emulate(CPUState* cpu) {
+static void
+emulate(CPUState* cpu) {
     int running = 1;
     while (running) {
         if (cpu->rip >= MEM_SIZE) {
